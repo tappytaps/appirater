@@ -54,8 +54,7 @@ NSString *const kAppiraterReminderRequestDate		= @"kAppiraterReminderRequestDate
 NSString *templateReviewURL = @"itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=APP_ID";
 NSString *templateReviewURLiOS7 = @"itms-apps://itunes.apple.com/app/idAPP_ID";
 NSString *templateReviewURLiOS8 = @"itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=APP_ID&onlyLatestVersion=true&pageNumber=0&sortOrdering=1&type=Purple+Software";
-
-NSString *templateReviewURLiOS11 = @"itms-apps://itunes.apple.com/us/app/itunes-u/idAPP_ID?action=write-review"
+NSString *templateReviewURLiOS11 = @"itms-apps://itunes.apple.com/us/app/itunes-u/idAPP_ID?action=write-review";
 
 
 static NSString *_appId;
@@ -642,11 +641,9 @@ static BOOL _alwaysUseMainBundle = NO;
         reviewURL = [templateReviewURLiOS7 stringByReplacingOccurrencesOfString:@"APP_ID" withString:_appId];
     }
     // iOS 8 needs a different templateReviewURL also @see https://github.com/arashpayan/appirater/issues/182
-    else if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0 && [[[UIDevice currentDevice] systemVersion] floatValue] < 11.0)
-    {
+    else if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0 && [[[UIDevice currentDevice] systemVersion] floatValue] < 11.0) {
         reviewURL = [templateReviewURLiOS8 stringByReplacingOccurrencesOfString:@"APP_ID" withString:_appId];
-    else if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 11.0)
-    {
+    } else if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 11.0) {
         reviewURL = [templateReviewURLiOS11 stringByReplacingOccurrencesOfString:@"APP_ID" withString:_appId];
     } else {
         reviewURL = [templateReviewURLiOS7 stringByReplacingOccurrencesOfString:@"APP_ID" withString:_appId];
